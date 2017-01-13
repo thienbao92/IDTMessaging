@@ -11,7 +11,9 @@ class MessageInput extends Component {
     super(props);
   }
 
-
+componentDidMount(){
+  this.contentInput.focus();
+}
 sendMsg (e){
   e.preventDefault();
 // cookie.load("userId");
