@@ -14,7 +14,7 @@ this.props.socket.on("welcome", data =>{
   render() {
     return (
       <div className="ChatContainer">
-        <MessageContainer />
+        <MessageContainer socket={this.props.socket}/>
         <MessageInput />
     </div>
     );
