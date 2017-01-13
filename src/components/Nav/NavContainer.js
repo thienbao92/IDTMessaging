@@ -10,16 +10,18 @@ class NavContainer extends Component {
     this.state = {
       "user" :{
         "name":""
-      }
+      },
+      "member" : []
     }
   }
 
   componentDidMount(){
     //socket : change name, user online, user offline
-  this._checkUserId();
+  this.checkUserId();
+  this.getMembetList();
   // cookie.save('userId', "testUserID")
   }
-  _checkUserId(){
+  checkUserId(){
   let userId = cookie.load('userId');
   if (userId) {
     axios.get('http://localhost:3000/user/single/'+userId)
@@ -58,11 +60,14 @@ this.setState({"user":{
 }})
 }
 
+
+
+
+
+
+
 submitChange(e){
   e.preventDefault();
-
-  console.log("submitChange", this.state.user.name);
-
 axios.post("http://localhost:3000/user/update", {
   "_id": cookie.load("userId"),
   "name": this.state.user.name
@@ -73,17 +78,26 @@ axios.post("http://localhost:3000/user/update", {
 }).catch(error => {
   console.log(error.response);
 })
-
-
-
 }
+
+getMembetList(){
+  axios.get("http://localhost:3000/user/update")
+  .then(response =>{
+this.setState({
+  "member":response.data
+})  }).catch(error => {
+    console.log(error.response);
+  })
+}
+
+
 
   render() {
     return (
       <div className="NavContainer">
       Navigation Container
       <Profile userProfile={this.state.user} handleChange={this.handleChange.bind(this)} submitChange={this.submitChange.bind(this)}/>
-    <MemberList />
+    <MemberList list={this.state.member}/>
     </div>
     );
   }
