@@ -47,7 +47,6 @@ class NavContainer extends Component {
     }).then(response => {
       this.setState({"user": response.data})
       cookie.save('userId', response.data._id)
-      console.log("check cookie");
     }).catch(error => {
       console.log(error.response);
     })
