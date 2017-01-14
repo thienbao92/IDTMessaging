@@ -3,15 +3,16 @@ import EditProfile from './EditProfile';
 class Profile extends Component {
 
   state = {
-    "edit": false
+    "edit": true
   };
 
   handleCancel() {
+
     this.setState({"edit": false})
   }
 
-  submitChange(e) {
-    this.props.submitChange(e);
+  submitChange(e, newName) {
+    this.props.submitChange(e, newName);
     this.handleCancel();
   }
 
@@ -19,20 +20,23 @@ class Profile extends Component {
     if (this.state.edit) {
       return (
         <div>
-          <EditProfile handleChange={this.props.handleChange} userProfile={this.props.userProfile} handleCancel={this.handleCancel.bind(this)} submitChange={this.submitChange.bind(this)}/>
+          <EditProfile userProfile={this.props.userProfile} handleCancel={this.handleCancel.bind(this)} submitChange={this.submitChange.bind(this)}/>
         </div>
       )
     } else {
       return (
         <div>
-          Profile - {this.props.userProfile.name}
-          <button onClick={this.openEdit.bind(this)}>Edit</button>
+          <h3>
+            Hi,
+            <br/> {this.props.userProfile.name}</h3>
+          <a className="btn-normal" href="" onClick={this.openEdit.bind(this)}>Edit</a>
         </div>
       )
     }
   }
 
-  openEdit() {
+  openEdit(e) {
+    e.preventDefault();
     this.setState({"edit": true})
   }
 

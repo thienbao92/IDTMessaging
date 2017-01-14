@@ -59,11 +59,16 @@ class NavContainer extends Component {
     })
   }
 
-  submitChange(e) {
+  submitChange(e, newName) {
     e.preventDefault();
+    this.setState({
+      "user": {
+        "name": newName
+      }
+    })
     axios.post("http://localhost:3000/user/update", {
       "_id": cookie.load("userId"),
-      "name": this.state.user.name
+      "name": newName
     }, {
       headers: {
         'Content-Type': 'application/json'
@@ -79,7 +84,7 @@ class NavContainer extends Component {
     return (
       <div className="NavContainer">
 
-        <Profile userProfile={this.state.user} handleChange={this.handleChange.bind(this)} submitChange={this.submitChange.bind(this)}/>
+        <Profile userProfile={this.state.user} submitChange={this.submitChange.bind(this)}/>
         <MemberList list={this.props.member}/>
       </div>
     );

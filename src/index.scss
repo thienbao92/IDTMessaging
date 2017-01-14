@@ -1,3 +1,5 @@
+$edit-font-size: 2rem;
+
 h1 {
     color: blue !important;
 }
@@ -21,9 +23,63 @@ h1 {
 }
 
 .Profile {
-    color: blue;
-    border: 1px solid black;
     height: 20%;
+    text-align: center;
+
+    h3 {
+        font-size: $edit-font-size;
+        line-height: 3rem;
+        height: 60%;
+    }
+}
+
+.btn-normal {
+    margin: 1rem;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    color: #ffffff;
+    background: #1abc9c;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+
+    &:hover {
+        background: #16a085;
+        text-decoration: none;
+    }
+
+    &:active {
+        position: relative;
+        top: 1px;
+    }
+}
+
+.btn-dangerous {
+    @extend .btn-normal;
+    background: #e74c3c;
+
+    &:hover {
+        background: #c0392b;
+    }
+}
+
+.EditProfile {
+    #editName {
+        text-align: center;
+        font-size: $edit-font-size;
+        color: white;
+        width: 70%;
+        border: 0;
+        background: none;
+        margin: 1rem;
+        outline: none;
+        border-bottom: 1px solid white;
+        padding-bottom: 0.5rem;
+    }
+
+    #editName:focus {
+        outline: none;
+    }
 }
 
 .ChatContainer {

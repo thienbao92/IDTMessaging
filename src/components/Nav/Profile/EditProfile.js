@@ -23,15 +23,23 @@ class EditProfile extends Component {
     input.focus()
   }
 
+  submitChange(e) {
+    e.preventDefault();
+    this.props.submitChange(e, this.contentInput.value)
+  }
+
   render() {
     return (
-      <div className="">
-        New profile name:
+      <div className="EditProfile">
+        <h4>Choose your nickname</h4>
 
-        <form onSubmit={this.props.submitChange}>
-          <input id="editName" type="text" value={this.state.value} name="name" onChange={this.inputChange.bind(this)}/>
-          <input type="submit" value="Submit"/>
-          <input type="button" value="Cancel" onClick={this.props.handleCancel}/>
+        <form onSubmit={this.submitChange.bind(this)}>
+          <input id="editName" type="text" name="content" ref={node => {
+            this.contentInput = node
+          }}/>
+          <br/>
+          <a href="#" onClick={this.submitChange.bind(this)} className="btn-normal">Change</a>
+          <a href="#" type="button" className="btn-dangerous" value="Cancel" onClick={this.props.handleCancel}>Cancel</a>
 
         </form>
 
