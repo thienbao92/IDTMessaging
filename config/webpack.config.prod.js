@@ -234,7 +234,7 @@ module.exports = {
 
     new webpack.DefinePlugin({
       'process.env': {
-        'API_URL': JSON.stringify('https://idt-messaging-server.herokuapp.com')
+        'API_URL': JSON.stringify('https://messenger-idt.herokuapp.com')
       }
     })
   ],
