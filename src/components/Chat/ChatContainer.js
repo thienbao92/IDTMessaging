@@ -24,7 +24,7 @@ class ChatContainer extends Component {
   }
 
   getMsg() {
-    axios.get("http://localhost:3000/message").then((response) => {
+    axios.get(process.env.API_URL + "/message").then((response) => {
       this.setState({"messages": response.data})
     }).catch((error) => {
       console.log(error);

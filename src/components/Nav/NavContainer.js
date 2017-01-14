@@ -24,7 +24,7 @@ class NavContainer extends Component {
     let userId = cookie.load('userId');
     console.log("get user ID", userId);
     if (userId) {
-      axios.get('http://localhost:3000/user/single/' + userId).then(response => {
+      axios.get(process.env.API_URL + '/user/single/' + userId).then(response => {
         this.setState({"user": response.data})
       }).catch(error => {
         this._createRandomUser()
@@ -38,7 +38,7 @@ class NavContainer extends Component {
     console.log("create ramdom user");
     var randomName = "user-" + new Date().getTime();
 
-    axios.post("http://localhost:3000/user", {
+    axios.post(process.env.API_URL + "/user", {
       "name": randomName,
       "isOnline": true,
       "socketId": this.props.socket.id
@@ -66,7 +66,7 @@ class NavContainer extends Component {
         "name": newName
       }
     })
-    axios.post("http://localhost:3000/user/update", {
+    axios.post(process.env.API_URL + "/user/update", {
       "_id": cookie.load("userId"),
       "name": newName
     }, {

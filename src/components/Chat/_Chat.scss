@@ -9,6 +9,10 @@
 .MessageContainer {
     width: 100%;
     height: 95%;
+    overflow: scroll;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .MessageInput {
@@ -24,6 +28,7 @@
         width: 95%;
 
         input {
+            overflow: scroll;
             border: none;
             width: 100%;
             font-size: 1rem;
@@ -34,4 +39,42 @@
             outline: none;
         }
     }
+}
+
+.msgCover {
+    // width: 100%;
+}
+
+.selfMsg {
+    border: 1px solid black;
+    width: 47%;
+    float: right;
+    padding: 0.8rem;
+    border-radius: 0.6rem;
+    border-color: white;
+    margin: 0.2rem 1rem;
+    background-color: #607D8B;
+    line-height: 1.5rem;
+    color: white;
+
+    .sender {
+        display: none;
+    }
+}
+
+.otherMsg {
+    @extend .selfMsg;
+    float: left;
+    color: $msg-theme-color;
+    background: white;
+    border: 1px solid $msg-theme-color;
+
+    .sender {
+        display: block;
+        color: #CFD8DC;
+    }
+}
+
+.fakeInput {
+    display: none;
 }

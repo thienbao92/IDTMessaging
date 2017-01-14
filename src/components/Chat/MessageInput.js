@@ -16,7 +16,9 @@ class MessageInput extends Component {
     e.preventDefault();
     // cookie.load("userId");
     console.log(cookie.load("userId"));
-
+    if (!this.contentInput.value) {
+      return;
+    }
     let msgObj = {
       "sender": cookie.load("userId"),
       "content": this.contentInput.value,
@@ -26,7 +28,7 @@ class MessageInput extends Component {
 
     console.log(msgObj);
 
-    axios.post('http://localhost:3000/message', msgObj).then(function(response) {
+    axios.post(process.env.API_URL + '/message', msgObj).then(function(response) {
       console.log(response);
     }).catch(function(error) {
       console.log(error);
@@ -38,7 +40,7 @@ class MessageInput extends Component {
     return (
 
       <div className="MessageInput">
-        <form onSubmit={this.sendMsg.bind(this)}>
+        <form onSubmit={this.sendMsg.bind(this)} autoComplete="off">
 
           <input className="msgInput" type="text" ref={node => {
             this.contentInput = node

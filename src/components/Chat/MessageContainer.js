@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import cookie from 'react-cookie';
 class MessageContainer extends Component {
   constructor(props) {
     super(props);
@@ -8,7 +9,20 @@ class MessageContainer extends Component {
     };
   }
 
+  componentDidUpdate() {
+    const objDiv = document.getElementById('msgContainer');
+    objDiv.scrollTop = objDiv.scrollHeight;
+
+  }
   componentDidMount() {}
+
+  selfStyle(senderId) {
+    if (senderId === cookie.load("userId")) {
+      return "selfMsg"
+    } else {
+      return "otherMsg"
+    }
+  }
 
   showMsg() {
 
@@ -36,11 +50,16 @@ class MessageContainer extends Component {
     return msgArray.map((msg, index) => {
       return (
 
-        <div key={msg._id}>
+        <div className="msgCover" key={msg._id}>
 
-          {msg.name}
-          : {msg.content}
-          - {index}
+          <div className={this.selfStyle(msg.sender)}>
+            <div className="sender">
+
+              {msg.name}
+            </div>
+            {msg.content}
+
+          </div>
 
         </div>
 
@@ -51,9 +70,9 @@ class MessageContainer extends Component {
 
   render() {
     return (
-      <div className="MessageContainer">
+      <div id="msgContainer" className="MessageContainer">
         {this.showMsg()}
-        MessageContainer
+
       </div>
     );
   }

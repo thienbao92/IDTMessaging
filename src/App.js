@@ -6,7 +6,7 @@ import io from 'socket.io-client';
 import cookie from 'react-cookie';
 import axios from 'axios';
 
-let socket = io("http://localhost:3000");
+let socket = io(process.env.API_URL);
 
 class App extends Component {
   constructor() {
@@ -18,6 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log("api url", process.env.API_URL);
     //NOTE:New member comes ->update state member
     this.getMembetList()
     socket.on('connect', function() {
@@ -34,7 +35,7 @@ class App extends Component {
   }
 
   getMembetList() {
-    axios.get("http://localhost:3000/user").then(response => {
+    axios.get(process.env.API_URL + "/user").then(response => {
       this.setState({"member": response.data})
     }).catch(error => {
       console.log(error.response);
