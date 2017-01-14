@@ -38,7 +38,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <div className="NavContainer">
+      <div className="Profile">
         {this.canEdit()}
       </div>
     );

@@ -78,7 +78,7 @@ class NavContainer extends Component {
   render() {
     return (
       <div className="NavContainer">
-        Navigation Container
+
         <Profile userProfile={this.state.user} handleChange={this.handleChange.bind(this)} submitChange={this.submitChange.bind(this)}/>
         <MemberList list={this.props.member}/>
       </div>

@@ -1,10 +1,31 @@
 h1 {
-  color:blue !important
+    color: blue !important;
 }
 
+.App {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
 
+.NavContainer {
+    color: white;
+    width: 15%;
+    height: 100%;
+    // position: fixed;
+    background-color: #303E4D;
+}
 
+.Profile {
+    color: blue;
+    border: 1px solid black;
+    height: 20%;
+}
 
 .ChatContainer {
-
+    width: 80%;
 }
