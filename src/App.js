@@ -18,23 +18,23 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log("api url", process.env.API_URL);
-    //NOTE:New member comes ->update state member
     this.getMembetList()
+    //connect to socket
     socket.on('connect', function() {
-
+      //emit socket event with ID
       socket.emit("userConnect", {
         "socketId": socket.id,
         "userId": cookie.load("userId")
       })
     })
     socket.on("updateList", () => {
+      //I call this one cheat way. I should get data from socket and push to array. Run out of time. Cry inside
       this.getMembetList();
-      console.log("update memeber");
     })
   }
 
   getMembetList() {
+    //get list of member from Database
     axios.get(process.env.API_URL + "/user").then(response => {
       this.setState({"member": response.data})
     }).catch(error => {

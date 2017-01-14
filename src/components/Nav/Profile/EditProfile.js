@@ -13,17 +13,20 @@ class EditProfile extends Component {
     this.focusInput()
   }
   inputChange(e) {
-    console.log(e.target.value);
+    //handle input name change, then re-render
+
     this.setState({"value": e.target.value})
     this.props.handleChange(e);
   }
 
   focusInput() {
+    //focus on name Input when view change
     let input = document.getElementById("editName");
     input.focus()
   }
 
   submitChange(e) {
+    //submit change to parent props.submitChange
     e.preventDefault();
     this.props.submitChange(e, this.contentInput.value)
   }

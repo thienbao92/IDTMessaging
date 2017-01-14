@@ -7,16 +7,17 @@ class Profile extends Component {
   };
 
   handleCancel() {
-
+    //set state to cancel and re-render
     this.setState({"edit": false})
   }
 
   submitChange(e, newName) {
+    //submit change to parent submitChange function
     this.props.submitChange(e, newName);
     this.handleCancel();
   }
 
-  canEdit() {
+  switchView() {
     if (this.state.edit) {
       return (
         <div>
@@ -43,7 +44,7 @@ class Profile extends Component {
   render() {
     return (
       <div className="Profile">
-        {this.canEdit()}
+        {this.switchView()}
       </div>
     );
   }

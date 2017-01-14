@@ -16,14 +16,16 @@ class NavContainer extends Component {
   }
 
   componentDidMount() {
-    //socket : change name, user online, user offline
-    console.log("navigation mounted");
+
     this.checkUserId();
   }
   checkUserId() {
+    //Check if user id in cookie exists
+
     let userId = cookie.load('userId');
-    console.log("get user ID", userId);
+
     if (userId) {
+      //get user info from DB
       axios.get(process.env.API_URL + '/user/single/' + userId).then(response => {
         this.setState({"user": response.data})
       }).catch(error => {
@@ -35,7 +37,7 @@ class NavContainer extends Component {
   }
 
   _createRandomUser() {
-    console.log("create ramdom user");
+    //Create new user with randome ID basked on UTC time. I like UTC.
     var randomName = "user-" + new Date().getTime();
 
     axios.post(process.env.API_URL + "/user", {
