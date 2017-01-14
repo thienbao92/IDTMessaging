@@ -10,15 +10,17 @@ class MessageInput extends Component {
   }
 
   componentDidMount() {
+    //focus on msg input on first load
     this.contentInput.focus();
   }
   sendMsg(e) {
     e.preventDefault();
-    // cookie.load("userId");
-    console.log(cookie.load("userId"));
+
+    //Check if contentInput is valid
     if (!this.contentInput.value) {
       return;
     }
+    //Create msgObj
     let msgObj = {
       "sender": cookie.load("userId"),
       "content": this.contentInput.value,
@@ -26,13 +28,13 @@ class MessageInput extends Component {
       "chatRoom": "main"
     };
 
-    console.log(msgObj);
-
+    //send msgObj to API
     axios.post(process.env.API_URL + '/message', msgObj).then(function(response) {
       console.log(response);
     }).catch(function(error) {
       console.log(error);
     });
+    //Reset contentInput value
     this.contentInput.value = "";
   }
 

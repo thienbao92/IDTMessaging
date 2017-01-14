@@ -14,16 +14,19 @@ class ChatContainer extends Component {
   componentDidMount() {}
 
   componentDidMount() {
+    //listen to when new message created
+
     this.props.socket.on("newMsg", (newMsgObj) => {
-      console.log("new message came");
+      //push to messages array in state and re-render
       this.state.messages.push(newMsgObj)
-      // console.log(newMsgObj);
       this.setState(this.state);
     })
     this.getMsg()
   }
 
   getMsg() {
+
+    //Initial, get messages from API
     axios.get(process.env.API_URL + "/message").then((response) => {
       this.setState({"messages": response.data})
     }).catch((error) => {

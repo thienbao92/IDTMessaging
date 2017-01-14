@@ -10,13 +10,13 @@ class MessageContainer extends Component {
   }
 
   componentDidUpdate() {
+    //MessageContainer scrolls to bottom when entering chat
     const objDiv = document.getElementById('msgContainer');
     objDiv.scrollTop = objDiv.scrollHeight;
-
   }
-  componentDidMount() {}
 
   selfStyle(senderId) {
+    //set style for bubble chat if user match userId
     if (senderId === cookie.load("userId")) {
       return "selfMsg"
     } else {
@@ -25,17 +25,16 @@ class MessageContainer extends Component {
   }
 
   showMsg() {
+    //render and shows message
 
-    //
-    // console.log(this.props.messages);
-    // console.log(this.props.member);
-
+    //generate memberArray to member object
     let memberObj = {};
 
     for (var i = 0; i < this.props.member.length; i++) {
       memberObj[this.props.member[i]['_id']] = this.props.member[i].name;
     }
 
+    //set name of message sender - This can be done by server.
     let testArray = this.props.messages.map(msg => {
       msg.name = memberObj[msg.sender];
       return msg;
@@ -47,6 +46,7 @@ class MessageContainer extends Component {
       }
     })
 
+    //render message
     return msgArray.map((msg, index) => {
       return (
 
@@ -72,7 +72,6 @@ class MessageContainer extends Component {
     return (
       <div id="msgContainer" className="MessageContainer">
         {this.showMsg()}
-
       </div>
     );
   }
