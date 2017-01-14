@@ -20,13 +20,13 @@ class App extends Component {
   componentDidMount() {
     //NOTE:New member comes ->update state member
     this.getMembetList()
-    // socket.on('connect', function() {
-    //   socket.emit("userConnect", {
-    //     "socketId": socket.id,
-    //     "userId": cookie.load("userId")
-    //   })
-    //
-    // })
+    socket.on('connect', function() {
+      socket.emit("userConnect", {
+        "socketId": socket.id,
+        "userId": cookie.load("userId")
+      })
+
+    })
 
   }
 

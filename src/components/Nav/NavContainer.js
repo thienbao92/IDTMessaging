@@ -40,7 +40,8 @@ class NavContainer extends Component {
 
     axios.post("http://localhost:3000/user", {
       "name": randomName,
-      "isOnline": true
+      "isOnline": true,
+      "socketId": this.props.socket.id
     }).then(response => {
       this.setState({"user": response.data})
       cookie.save('userId', response.data._id)
