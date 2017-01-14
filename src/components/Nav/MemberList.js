@@ -3,11 +3,17 @@ import Member from './Member';
 import cookie from 'react-cookie';
 class MemberList extends Component {
   generateList() {
-    return this.props.list.map(member => {
-      if (member._id !== cookie.load("userId") && member.isOnline !== false) {
+
+    let sortedArr = this.props.list.sort((a, b) => {
+      return b.isOnline - a.isOnline;
+    })
+
+    return sortedArr.map(member => {
+      if (member._id !== cookie.load("userId")) {
         return (
           <div key={member._id}>
-            <Member name={member.name}/>
+            <Member name={member.name} online={member.isOnline}/>
+
           </div>
         )
       }
@@ -17,8 +23,10 @@ class MemberList extends Component {
   render() {
 
     return (
-      <div className="Member">
-        Member list {this.generateList()}
+      <div className="MemberList">
+        <h4>Your hommie</h4>
+
+        {this.generateList()}
 
       </div>
     );

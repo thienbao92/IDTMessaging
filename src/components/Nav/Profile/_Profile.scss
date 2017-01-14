@@ -1,0 +1,29 @@
+.Profile {
+    height: 20%;
+    text-align: center;
+
+    h3 {
+        font-size: $edit-font-size;
+        line-height: 3rem;
+        height: 60%;
+    }
+}
+
+.EditProfile {
+    #editName {
+        text-align: center;
+        font-size: $edit-font-size;
+        color: white;
+        width: 70%;
+        border: 0;
+        background: none;
+        margin: 1rem;
+        outline: none;
+        border-bottom: 1px solid white;
+        padding-bottom: 0.5rem;
+    }
+
+    #editName:focus {
+        outline: none;
+    }
+}

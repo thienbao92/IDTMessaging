@@ -1,8 +1,5 @@
-$edit-font-size: 2rem;
-
-h1 {
-    color: blue !important;
-}
+$edit-font-size: 1.5rem;
+@import "./components/Nav/_NavContainer.scss";
 
 .App {
     display: -webkit-flex;
@@ -12,25 +9,6 @@ h1 {
     height: 100%;
     width: 100%;
     position: fixed;
-}
-
-.NavContainer {
-    color: white;
-    width: 15%;
-    height: 100%;
-    // position: fixed;
-    background-color: #303E4D;
-}
-
-.Profile {
-    height: 20%;
-    text-align: center;
-
-    h3 {
-        font-size: $edit-font-size;
-        line-height: 3rem;
-        height: 60%;
-    }
 }
 
 .btn-normal {
@@ -60,25 +38,6 @@ h1 {
 
     &:hover {
         background: #c0392b;
-    }
-}
-
-.EditProfile {
-    #editName {
-        text-align: center;
-        font-size: $edit-font-size;
-        color: white;
-        width: 70%;
-        border: 0;
-        background: none;
-        margin: 1rem;
-        outline: none;
-        border-bottom: 1px solid white;
-        padding-bottom: 0.5rem;
-    }
-
-    #editName:focus {
-        outline: none;
     }
 }
 

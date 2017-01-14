@@ -3,7 +3,7 @@ import EditProfile from './EditProfile';
 class Profile extends Component {
 
   state = {
-    "edit": true
+    "edit": false
   };
 
   handleCancel() {
@@ -27,8 +27,8 @@ class Profile extends Component {
       return (
         <div>
           <h3>
-            Hi,
-            <br/> {this.props.userProfile.name}</h3>
+            Yo,
+            <br/> {this.props.userProfile.name}!</h3>
           <a className="btn-normal" href="" onClick={this.openEdit.bind(this)}>Edit</a>
         </div>
       )

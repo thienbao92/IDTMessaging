@@ -1,0 +1,11 @@
+@import './_Member';
+@import "./Profile/_Profile";
+@import "./_MemberList";
+
+.NavContainer {
+    color: white;
+    width: 15%;
+    height: 100%;
+    // position: fixed;
+    background-color: #303E4D;
+}
