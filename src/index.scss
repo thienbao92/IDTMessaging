@@ -1,5 +1,6 @@
 $edit-font-size: 1.5rem;
 @import "./components/Nav/_NavContainer.scss";
+@import "./components/Chat/_Chat";
 
 .App {
     display: -webkit-flex;
@@ -12,7 +13,7 @@ $edit-font-size: 1.5rem;
 }
 
 .btn-normal {
-    margin: 1rem;
+    // margin: 1rem;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
@@ -39,8 +40,4 @@ $edit-font-size: 1.5rem;
     &:hover {
         background: #c0392b;
     }
-}
-
-.ChatContainer {
-    width: 80%;
 }

@@ -40,14 +40,12 @@ class MessageInput extends Component {
       <div className="MessageInput">
         <form onSubmit={this.sendMsg.bind(this)}>
 
-          <input type="text" ref={node => {
+          <input className="msgInput" type="text" ref={node => {
             this.contentInput = node
-          }} name="content"/>
-
-          <input type="submit" value="submit"/>
+          }} name="content" placeholder="Type a message..."/>
 
         </form>
-        MessageInput
+        <a href="#" onClick={this.sendMsg.bind(this)} className="btn-normal">Send</a>
       </div>
     );
   }

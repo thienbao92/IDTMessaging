@@ -24,7 +24,7 @@ class MemberList extends Component {
 
     return (
       <div className="MemberList">
-        <h4>Your hommie</h4>
+        <h4>Your homies</h4>
 
         {this.generateList()}
 
