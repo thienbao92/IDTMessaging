@@ -4,8 +4,8 @@ class Member extends Component {
   render() {
     return (
       <div className="Member">
-        Member
-    </div>
+        Member : {this.props.name}
+      </div>
     );
   }
 }

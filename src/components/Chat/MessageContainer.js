@@ -1,6 +1,4 @@
-import React, {
-  Component
-} from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 class MessageContainer extends Component {
   constructor(props) {
@@ -10,53 +8,51 @@ class MessageContainer extends Component {
     };
   }
 
+  componentDidMount() {}
 
-  componentDidMount() {
-    this.props.socket.on("newMsg",(newMsgObj)=>{
-      console.log("new message came");
-      this.state.messages.push(newMsgObj)
-      // console.log(newMsgObj);
-      this.setState(this.state);
+  showMsg() {
+
+    //
+    // console.log(this.props.messages);
+    // console.log(this.props.member);
+
+    let memberObj = {};
+
+    for (var i = 0; i < this.props.member.length; i++) {
+      memberObj[this.props.member[i]['_id']] = this.props.member[i].name;
+    }
+
+    let testArray = this.props.messages.map(msg => {
+      msg.name = memberObj[msg.sender];
+      return msg;
     })
-    this.getMsg()
-  }
 
-  log() {
-    console.log(this.state);
-  }
-
-  getMsg() {
-    axios.get("http://localhost:3000/message").then((response) => {
-      this.setState({
-        "messages": response.data
-      })
-    }).catch((error) => {
-      console.log(error);
+    let msgArray = testArray.filter(msg => {
+      if (msg.name !== undefined) {
+        return msg;
+      }
     })
+
+    return msgArray.map((msg, index) => {
+      return (
+
+        <div key={msg._id}>
+
+          {msg.name}
+          : {msg.content}
+          - {index}
+
+        </div>
+
+      )
+    })
+
   }
-
-showMsg(){
-  return this.state.messages.map(msg =>{
-    return(
-
-<div key={msg._id}>
-
-{msg.sender} : {msg.content}
-
-</div>
-
-
-
-    )
-  })
-}
-
-
 
   render() {
     return (
-      <div className = "MessageContainer">
-      {this.showMsg()}
+      <div className="MessageContainer">
+        {this.showMsg()}
         MessageContainer
       </div>
     );
